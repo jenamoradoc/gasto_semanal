@@ -6,18 +6,14 @@ class FormularioGasto extends Component {
     cantidadGasto = React.createRef();
 
     crearGasto = (e) => {
-        e.preventDefault();
-        
-        const gasto = {
-            nombreGasto : this.nombreGasto.current.value,
+        e.preventDefault();//evita que se pueda ir en cero o en default
+        const gasto = { //se crea el objeto con los datos
+            nombreGasto : this.nombreGasto.current.value,// se toma el valor de los refs
             cantidadGasto : this.cantidadGasto.current.value
         }
-
-        console.log(gasto);
-
-        this.props.agregarGasto(gasto);
-        
-        e.currentTarget.reset();
+        //console.log(gasto);
+        this.props.agregarGasto(gasto);//agregar y enviar por props
+        //e.currentTarget.reset(); //se resetea el formulario
     }
 
     render(){

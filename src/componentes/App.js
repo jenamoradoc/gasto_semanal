@@ -38,10 +38,23 @@ class App extends Component {
   agregarGasto = gasto => {
     const gastos = {...this.state.gastos};
     gastos[`gastos${Date.now()}`] = gasto; //agregar el gasto al objeto de el state
+    this.restarPresupuesto(gasto.cantidadGasto);//le paso el valor de la variable cantidadgasto que le paso desde el formulario y se lo paso a la funcion restar
     this.setState({ //ponerlo en el state
       gastos
     })
   }
+
+  //restar de el presupuesto cuando un gasto se crea
+  restarPresupuesto = cantidad =>{
+    let restar = Number(cantidad);//convierto la cantidad que es de el tipo string a un number
+    let restante = this.state.restante;//sacamos una copia de el state actual asi como esta, no es necesario el operador de spreed (...) porque no necesitamos que venga separado, si no queda claro proba y genera un log para ver diferencias
+    restante -= restar;//lo restamos
+    this.setState({//agregamos el nuevo restate al state
+      restante
+    })
+  }
+
+   
 
 
 
@@ -62,7 +75,10 @@ class App extends Component {
               <Listado
                 gastos={this.state.gastos}
               />
-              <ControlPresupuesto/>
+              <ControlPresupuesto
+                presupuesto = {this.state.presupuesto}
+                restante = {this.state.restante}
+              />
             </div>
           </div>
         </div>
