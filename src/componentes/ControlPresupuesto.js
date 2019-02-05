@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Presupuesto from './Presupuesto';
 import Restante from './Restante';
+import PropTypes from 'prop-types';
 
 class ControlPresupuesto extends Component {
     render(){
@@ -17,4 +18,10 @@ class ControlPresupuesto extends Component {
         )
     }
 }
+
+ControlPresupuesto.propTypes = {
+    presupuesto: PropTypes.string.isRequired,
+    restante: PropTypes.string.isRequired
+}
+
 export default ControlPresupuesto;

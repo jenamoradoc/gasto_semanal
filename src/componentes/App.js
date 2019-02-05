@@ -49,6 +49,7 @@ class App extends Component {
     let restar = Number(cantidad);//convierto la cantidad que es de el tipo string a un number
     let restante = this.state.restante;//sacamos una copia de el state actual asi como esta, no es necesario el operador de spreed (...) porque no necesitamos que venga separado, si no queda claro proba y genera un log para ver diferencias
     restante -= restar;//lo restamos
+    restante = String(restante); //lo convertimos a sting nuevamente para poder validar con el Proptypes
     this.setState({//agregamos el nuevo restate al state
       restante
     })
